@@ -22,15 +22,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.movies.data.repository.MoviesRepository
 import com.example.movies.domain.model.MovieSection
 import com.example.movies.domain.model.movie1
+import org.koin.compose.viewmodel.koinViewModel
 import com.example.movies.features.components.MovieSection as MovieSectionComponent
 
 @Composable
 fun MovieListRoute(
-    viewModel: MovieListViewModel = viewModel {
-        MovieListViewModel(
-            moviesRepository = MoviesRepository()
-        )
-    }
+    viewModel: MovieListViewModel = koinViewModel()
 ) {
 
     val movieListState by viewModel.moviesListState.collectAsStateWithLifecycle()

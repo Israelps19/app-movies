@@ -10,8 +10,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 
 class MoviesRepository(
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
-    private val ktorApiClient: KtorApiClient
+    private val ktorApiClient: KtorApiClient,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
     suspend fun getMovieSections(): List<MovieSection> {

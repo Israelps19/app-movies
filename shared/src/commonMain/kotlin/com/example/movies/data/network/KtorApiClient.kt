@@ -37,7 +37,7 @@ class KtorApiClient {
         install(Auth) {
             bearer {
                 loadTokens {
-                    BearerTokens("", "")
+                    BearerTokens("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZTcyYzNmYjQ5MDFjZDI0OWFlMTY2YTkyN2FhMWU3NyIsIm5iZiI6MTY4NzEzMDc5Ni4yNDk5OTk4LCJzdWIiOiI2NDhmOTJhYzQ1NzY1ZDAxMWRiZmM3YjAiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.KjWdp-cZy1kEhg1-DYAUIqlcZ5NZicYRvPiJ9bjn23A", "")
                 }
             }
         }
