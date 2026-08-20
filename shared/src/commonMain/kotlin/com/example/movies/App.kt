@@ -1,6 +1,5 @@
 package com.example.movies
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
@@ -10,6 +9,7 @@ import com.example.movies.data.di.dataModule
 import com.example.movies.data.di.networkModule
 import com.example.movies.data.di.viewModelModule
 import com.example.movies.features.movies.MovieListRoute
+import com.example.movies.features.theme.MoviesAppTheme
 import com.example.movies.navigation.AppRoutes
 import org.koin.compose.KoinApplication
 import org.koin.dsl.koinConfiguration
@@ -23,17 +23,15 @@ fun App() {
                 modules(networkModule, dataModule, viewModelModule)
             }
         ), content = {
-        MaterialTheme {
-            val navController = rememberNavController()
-            NavHost(navController, startDestination = AppRoutes.MovieList) {
-                composable<AppRoutes.MovieList> {
-                    MovieListRoute()
+            MoviesAppTheme {
+                val navController = rememberNavController()
+                NavHost(navController, startDestination = AppRoutes.MovieList) {
+                    composable<AppRoutes.MovieList> {
+                        MovieListRoute()
+                    }
+                    composable<AppRoutes.MovieDetails> { }
                 }
-
-                composable<AppRoutes.MovieDetails> {  }
             }
         }
-    })
-
-
+    )
 }
