@@ -1,0 +1,72 @@
+# ==============================
+# Android Studio / IntelliJ
+# ==============================
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Local Android configuration
+local.properties
+
+# Android generated files
+.externalNativeBuild/
+.cxx/
+captures/
+
+# Kotlin
+*.class
+
+# ==============================
+# Xcode
+# ==============================
+# Xcode user settings
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# Xcode build products
+DerivedData/
+build/
+
+# Archives
+*.xcarchive
+
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Xcode temporary files
+*.moved-aside
+*.xccheckout
+*.xcuserdatad
+
+# ==============================
+# Secrets / Environment
+# ==============================
+.env
+.env.*
+*.jks
+*.keystore
+
+# ==============================
+# OS
+# ==============================
+.DS_Store
+
+# ==============================
+# Logs
+# ==============================
+*.log
