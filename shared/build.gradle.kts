@@ -74,11 +74,12 @@ kotlin {
             implementation(libs.coil.compose)
             implementation(libs.coil.network.ktor)
 
-            val koin_version = "4.2.0"
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.koin.compose.viewmodel.navigation)
             implementation(libs.koin.core)
+
+            implementation(libs.xicon.pack.z)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
