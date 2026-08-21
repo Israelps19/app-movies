@@ -68,9 +68,12 @@ fun MovieListScreen(
                     ) {
                         items(moviesListState.movieSection) { movieSection ->
                             val title = when (movieSection.section) {
-                                MovieSection.SectionType.POPULAR -> stringResource(Res.string.movies_list_popular_movies)
-                                MovieSection.SectionType.TOP_RATED -> stringResource(Res.string.movies_list_top_rated_movies)
-                                MovieSection.SectionType.UPCOMING -> stringResource(Res.string.movies_list_upcoming_movies)
+                                MovieSection.SectionType.POPULAR -> stringResource(
+                                    Res.string.movies_list_popular_movies)
+                                MovieSection.SectionType.TOP_RATED -> stringResource(
+                                    Res.string.movies_list_top_rated_movies)
+                                MovieSection.SectionType.UPCOMING -> stringResource(
+                                    Res.string.movies_list_upcoming_movies)
                             }
 
                             MovieSectionComponent(
