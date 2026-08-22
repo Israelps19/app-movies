@@ -11,7 +11,7 @@ fun MoviesAppTheme(
 ) {
     MaterialTheme(
         colorScheme = AppColorScheme,
-        typography = AppTypography(),
+        typography = appTypography(),
         shapes = AppShapes,
     ) {
         content()
