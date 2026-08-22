@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedButton
@@ -59,8 +61,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun MovieDetailRoute(
     onBackClick: () -> Unit,
-    viewModel: MovieDetailViewModel = koinViewModel(),
-    modifier: Modifier = Modifier
+    viewModel: MovieDetailViewModel = koinViewModel()
 ) {
 
     val movieDetailState by viewModel.movieDetailState.collectAsStateWithLifecycle()
@@ -144,9 +145,12 @@ fun MovieDetailContent(
     modifier: Modifier = Modifier,
     movie: Movie
 ) {
+
+    val scrollState = rememberScrollState()
     Column(
         modifier = modifier
             .fillMaxSize()
+            .verticalScroll(scrollState)
     ) {
         Surface(
             modifier = Modifier
@@ -279,6 +283,7 @@ fun MovieDetailContent(
 
             Box(
                 modifier = Modifier
+                    .fillMaxWidth()
                     .padding(16.dp)
             ) {
                 Text(
@@ -292,7 +297,7 @@ fun MovieDetailContent(
 
 @Composable
 @Preview
-fun MovieDetailPreview(modifier: Modifier = Modifier) {
+fun MovieDetailPreview() {
     MoviesAppTheme {
         MovieDetailScreen(
             movieDetailState = MovieDetailState.Success(
