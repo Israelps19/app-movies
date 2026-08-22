@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.movies.data.di.dataModule
 import com.example.movies.data.di.networkModule
 import com.example.movies.data.di.viewModelModule
+import com.example.movies.features.moviedetail.MovieDetailRoute
 import com.example.movies.features.movies.MovieListRoute
 import com.example.movies.features.theme.MoviesAppTheme
 import com.example.movies.navigation.AppRoutes
@@ -27,9 +28,15 @@ fun App() {
                 val navController = rememberNavController()
                 NavHost(navController, startDestination = AppRoutes.MovieList) {
                     composable<AppRoutes.MovieList> {
-                        MovieListRoute()
+                        MovieListRoute(
+                            navigateToMovieDetail = { movieId ->
+                                navController.navigate(AppRoutes.MovieDetails(movieId))
+                            }
+                        )
                     }
-                    composable<AppRoutes.MovieDetails> { }
+                    composable<AppRoutes.MovieDetails> {
+                        MovieDetailRoute()
+                    }
                 }
             }
         }

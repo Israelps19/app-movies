@@ -22,6 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.movies.data.repository.MoviesRepository
 import com.example.movies.domain.model.MovieSection
 import com.example.movies.domain.model.movie1
+import com.example.movies.features.theme.MoviesAppTheme
 import movies.shared.generated.resources.Res
 import movies.shared.generated.resources.movies_list_popular_movies
 import movies.shared.generated.resources.movies_list_top_rated_movies
@@ -32,13 +33,15 @@ import com.example.movies.features.components.MovieSection as MovieSectionCompon
 
 @Composable
 fun MovieListRoute(
-    viewModel: MovieListViewModel = koinViewModel()
+    viewModel: MovieListViewModel = koinViewModel(),
+    navigateToMovieDetail: (movieId: Int) -> Unit
 ) {
 
     val movieListState by viewModel.moviesListState.collectAsStateWithLifecycle()
 
     MovieListScreen(
-        moviesListState = movieListState
+        moviesListState = movieListState,
+        onMovieClick = navigateToMovieDetail
     )
 }
 
@@ -46,6 +49,7 @@ fun MovieListRoute(
 @Composable
 fun MovieListScreen(
     moviesListState: MoviesListState,
+    onMovieClick: (movieId: Int) -> Unit
 ) {
     Scaffold { padding ->
         Box(
@@ -78,7 +82,8 @@ fun MovieListScreen(
 
                             MovieSectionComponent(
                                 title = title,
-                                movies = movieSection.movies
+                                movies = movieSection.movies,
+                                onMoviePosterClick = onMovieClick
                             )
                         }
                     }
@@ -100,22 +105,25 @@ fun MovieListScreen(
 @Preview
 @Composable
 fun MovieListScreenPreview() {
-    MovieListScreen(
-        moviesListState = MoviesListState.Success(
-            movieSection = listOf(
-                MovieSection(
-                    section = MovieSection.SectionType.POPULAR,
-                    movies = List(10) { movie1 }
-                ),
-                MovieSection(
-                    section = MovieSection.SectionType.TOP_RATED,
-                    movies = List(10) { movie1 }
-                ),
-                MovieSection(
-                    section = MovieSection.SectionType.UPCOMING,
-                    movies = List(10) { movie1 }
+    MoviesAppTheme {
+        MovieListScreen(
+            moviesListState = MoviesListState.Success(
+                movieSection = listOf(
+                    MovieSection(
+                        section = MovieSection.SectionType.POPULAR,
+                        movies = List(10) { movie1 }
+                    ),
+                    MovieSection(
+                        section = MovieSection.SectionType.TOP_RATED,
+                        movies = List(10) { movie1 }
+                    ),
+                    MovieSection(
+                        section = MovieSection.SectionType.UPCOMING,
+                        movies = List(10) { movie1 }
+                    )
                 )
-            )
+            ),
+            onMovieClick = {}
         )
-    )
+    }
 }

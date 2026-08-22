@@ -1,5 +1,6 @@
 package com.example.movies.features.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -17,13 +18,19 @@ import androidx.compose.ui.unit.dp
 import com.example.movies.domain.model.Movie
 import com.example.movies.domain.model.movie1
 import coil3.compose.AsyncImage
+
 @Composable
 fun MoviePoster(
     movie: Movie,
+    onMoviePosterClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier.width(140.dp)
+        modifier = modifier
+            .clickable {
+                onMoviePosterClick()
+            }
+            .width(140.dp)
     ) {
         Card(
             modifier = Modifier
@@ -54,6 +61,7 @@ fun MoviePoster(
 @Composable
 fun MoviePosterPreview() {
     MoviePoster(
-        movie = movie1
+        movie = movie1,
+        onMoviePosterClick = {}
     )
 }
